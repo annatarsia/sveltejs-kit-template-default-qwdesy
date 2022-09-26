@@ -1,57 +1,41 @@
 <script>
-	import Counter from '$lib/Counter.svelte';
+	import './index.css';
+	import Item from '$lib/Item/Item.svelte';
+	import PlayerItemsTable from '$lib/PlayerItemsTable/PlayerItemsTable.svelte';
+	import { data } from './+page.js'
+
+	function collectPoints() {
+	}
 </script>
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Game points system" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<table class="points-system">
+		<thead>
+			<tr class="points-system__headers">
+				<th>Kahoot! Points</th>
+				<th>Player Items</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="points-system__items-column">
+					{#each data as item}
+						<Item
+							text={item.text}
+							on:click={collectPoints}
+						/>
+					{/each}
+				</td>
+				<td class="points-system__player-items-table">
+					<PlayerItemsTable
+					/>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>

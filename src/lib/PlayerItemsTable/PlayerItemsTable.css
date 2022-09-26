@@ -1,0 +1,7 @@
+.player-items {
+	align-items: stretch;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	width: 100%;
+}
