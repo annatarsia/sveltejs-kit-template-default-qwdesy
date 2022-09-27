@@ -9,6 +9,6 @@
 
 </script>
 
-<button class="item-button">
+<button class="item-button" on:click>
   <span class="item-button-text">{text}</span>
 </button>

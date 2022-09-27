@@ -1,5 +1,9 @@
 <script>
 	import './PlayerItemsTable.css';
+
+	export let total = 0;
+
+	$: total;
 </script>
 
 <section>
@@ -14,8 +18,10 @@
 			<td>30</td>
 		</tr>
 			<tr>
-			<td>Total 140</td>
-			<td>Button New game</td>
+			<td>Total: {total}</td>
+			<td>
+			<button>New game</button>
+			</td>
 		</tr>
 	</table>
 </section>

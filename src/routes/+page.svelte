@@ -4,7 +4,10 @@
 	import PlayerItemsTable from '$lib/PlayerItemsTable/PlayerItemsTable.svelte';
 	import { data } from './+page.js'
 
-	function collectPoints() {
+	let totalScore = 0;
+
+	function collectPoints(item) {
+		totalScore++;
 	}
 </script>
 
@@ -27,12 +30,13 @@
 					{#each data as item}
 						<Item
 							text={item.text}
-							on:click={collectPoints}
+							on:click={collectPoints(item)}
 						/>
 					{/each}
 				</td>
 				<td class="points-system__player-items-table">
 					<PlayerItemsTable
+						total={totalScore}
 					/>
 				</td>
 			</tr>

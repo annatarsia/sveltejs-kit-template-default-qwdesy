@@ -29,4 +29,9 @@ tr {
 
 .points-system__items-column {
 	display: flex;
+	flex-grow: 1;
+}
+
+.points-system__player-items-table {
+	flex-grow: 2;
 }

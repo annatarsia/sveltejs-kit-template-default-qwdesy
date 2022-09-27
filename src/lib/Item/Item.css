@@ -1,13 +1,10 @@
 .item-button {
-	background-color: white;
-	border: 1px solid #a393a1;
-	border-radius: 4px;
+	align-items: center;
 	display: flex;
-	flex-direction: row;
+	height: 40px;
 	justify-content: center;
-	min-height: 40px;
+	margin: 15px;
 	min-width: 40px;
-	padding: 10px;
 }
 
 .item-button:hover {
