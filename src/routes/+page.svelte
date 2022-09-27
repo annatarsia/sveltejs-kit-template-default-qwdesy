@@ -8,48 +8,56 @@
 	function collectPoints({ detail }) {
 
 		let currentItemData = {};
-		let hasHitBonusMark = false; // The bonus mark has been hit
 
 		switch (detail.item) {
 			case 'A':
- 				currentItemData = $currentPlayerData.singleItems.find(i => i.item === 'A');
-				calculatePoints(currentItemData, detail.unitPoints, detail.mark, detail.bonus);
+				calculatePoints('A', detail.unitPoints, detail.mark, detail.bonus);
 				break;
 			case 'B':
-				currentItemData = $currentPlayerData.singleItems.find(i => i.item === 'B');
-				calculatePoints(currentItemData, detail.unitPoints, detail.mark, detail.bonus);
+				calculatePoints('B', detail.unitPoints, detail.mark, detail.bonus);
 				break;
 			case 'C':
-				currentItemData = $currentPlayerData.singleItems.find(i => i.item === 'C');
-				calculatePoints(currentItemData, detail.unitPoints, detail.mark, detail.bonus);
+				calculatePoints('C', detail.unitPoints, detail.mark, detail.bonus);
 				break;
 			case 'D':
-				currentItemData = $currentPlayerData.singleItems.find(i => i.item === 'D');
-				calculatePoints(currentItemData, detail.unitPoints, detail.mark, detail.bonus);
+				calculatePoints('D', detail.unitPoints, detail.mark, detail.bonus);
 				break;
 		}
 	}
 
-	function calculatePoints(currentItemData, unitPoints, mark, bonus) {
-			let hasHitBonusMark = currentItemData.quantity !== 0 && (currentItemData.quantity + 1) % mark === 0;
+	function calculatePoints(item, unitPoints, mark, bonus) {
+			let currentItemData = $currentPlayerData.singleItems.find(i => i.item === item);
+			let hasHitBonusMark = currentItemData.quantity !== 0 && (currentItemData.quantity + 1) % mark === 0; // The bonus mark has been hit
 			
 			if (bonus > 0 && hasHitBonusMark) {
-				countWithBonus(currentItemData, unitPoints, bonus, mark);
+				countWithBonus(item, unitPoints, bonus, mark);
 			} else {
-				simpleCount(currentItemData, unitPoints);
+				simpleCount(item, unitPoints);
 			}
 	}
 
 	// Function called if an item does not have bonuses or did not hit the bonus mark
-	function simpleCount(currentStoreItem, points) {
-		currentStoreItem.quantity++;
-		currentStoreItem.score = currentStoreItem.score + points;
+	function simpleCount(item, points) {
+		let currentStoreItem =  $currentPlayerData.singleItems.find(i => i.item === item);
+
+		currentPlayerData.update(data => {
+			data.singleItems.find(i => i.item === item).quantity++;
+			data.singleItems.find(i => i.item === item).score = currentStoreItem.score + points;
+
+			return data;
+		});
 	}
 
 		// Function called if an item does has hit the bonus mark
-	function countWithBonus(currentStoreItem, points, bonus, mark) {
-		currentStoreItem.quantity++;
-		currentStoreItem.score = currentStoreItem.score + points + (bonus - points * mark);
+	function countWithBonus(item, points, bonus, mark) {
+		let currentStoreItem =  $currentPlayerData.singleItems.find(i => i.item === item);
+
+		currentPlayerData.update(data => {
+			data.singleItems.find(i => i.item === item).quantity++;
+			data.singleItems.find(i => i.item === item).score = currentStoreItem.score + points + (bonus - points * mark);
+
+			return data;
+		});
 		
 		$currentPlayerData.totalBonus += bonus - points * mark; // Update total that is bonuses
 	}

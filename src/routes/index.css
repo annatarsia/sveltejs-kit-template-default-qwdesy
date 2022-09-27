@@ -24,7 +24,12 @@ tr {
 }
 
 .points-system__headers {
+	border-bottom: 1px solid #ececec;
 	font-size: 20px;
+}
+
+th {
+	flex-grow: 1;
 }
 
 .points-system__items-column {
