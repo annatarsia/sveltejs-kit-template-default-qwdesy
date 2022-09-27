@@ -3,11 +3,20 @@
 	import Item from '$lib/Item/Item.svelte';
 	import PlayerItemsTable from '$lib/PlayerItemsTable/PlayerItemsTable.svelte';
 	import { data } from './+page.js'
+	import { currentPlayerData } from './../stores';
 
 	let totalScore = 0;
 
-	function collectPoints(item) {
-		totalScore++;
+	function collectPoints({ detail }) {
+		totalScore = detail.points;
+	}
+
+	function resetGame() {
+		currentPlayerData.update(data => {
+			data.singleItems = [];
+			data.totalBonus = 0;
+			data.totalScore = 0;
+		});
 	}
 </script>
 
@@ -30,13 +39,17 @@
 					{#each data as item}
 						<Item
 							text={item.text}
-							on:click={collectPoints(item)}
+							points={item.unitPoints}
+							mark={item.mark}
+							bonus={item.bonus}
+							on:calculateScore={collectPoints}
 						/>
 					{/each}
 				</td>
 				<td class="points-system__player-items-table">
 					<PlayerItemsTable
 						total={totalScore}
+						on:reset={resetGame}
 					/>
 				</td>
 			</tr>

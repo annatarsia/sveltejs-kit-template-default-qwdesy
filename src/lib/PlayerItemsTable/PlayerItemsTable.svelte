@@ -1,9 +1,11 @@
 <script>
 	import './PlayerItemsTable.css';
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
 
 	export let total = 0;
 
-	$: total;
 </script>
 
 <section>
@@ -17,10 +19,10 @@
 			<td>Bonus</td>
 			<td>30</td>
 		</tr>
-			<tr>
+		<tr>
 			<td>Total: {total}</td>
 			<td>
-			<button>New game</button>
+			<button on:click={() => dispatch('reset')}>New game</button>
 			</td>
 		</tr>
 	</table>
