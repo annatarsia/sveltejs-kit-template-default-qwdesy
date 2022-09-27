@@ -4,6 +4,7 @@
 
   const dispatch = createEventDispatcher();
 
+	export let currentItems;
 	export let total = 0;
 
 </script>
@@ -15,12 +16,19 @@
 			<th>Qty</th>
 			<th>Score</th>
 		</tr>
+		{#each $currentItems.singleItems as row}
+			<tr>
+				<td>{row.item}</td>
+				<td>{row.quantity}</td>
+				<td>{row.score}</td>
+			</tr>
+		{/each}
 		<tr>
 			<td>Bonus</td>
-			<td>30</td>
+			<td>{$currentItems.totalBonus}</td>
 		</tr>
 		<tr>
-			<td>Total: {total}</td>
+			<td>Total: {$currentItems.totalScore}</td>
 			<td>
 			<button on:click={() => dispatch('reset')}>New game</button>
 			</td>

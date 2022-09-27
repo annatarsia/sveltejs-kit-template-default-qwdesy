@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-const defaultPlayerItemsData = {
+export const currentPlayerData = writable({
 	singleItems: [
 		{
 			item: 'A',
@@ -25,6 +25,4 @@ const defaultPlayerItemsData = {
 	],
 	totalBonus: 0,
 	totalScore: 0
-};
-
-export const currentPlayerData = writable(defaultPlayerItemsData);
+});

@@ -7,18 +7,22 @@
   export let id = '';
   export let text = '';
   export let points = 0;
+  export let mark = 0;
   export let bonus = 0;
 
   let hasBonus = bonus > 0 ? true : false;
 
-  function calculatrScore(event){
+  function calculateScore(event){
     dispatch('calculateScore', {
-      points: points,
+      bonus: bonus,
+      item: text,
+      mark: mark,
+      unitPoints: points,
     })
   }
 
 </script>
 
-<button class="item-button" on:click={calculateScore()}>
+<button class="item-button" on:click={calculateScore}>
   <span class="item-button-text">{text}</span>
 </button>
