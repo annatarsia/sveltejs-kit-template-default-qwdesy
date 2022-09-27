@@ -6,7 +6,6 @@
 	import { currentPlayerData } from './../stores';
 
 	function collectPoints({ detail }) {
-		$currentPlayerData.totalScore += detail.unitPoints;
 
 		let currentItemData = {};
 		let hasHitBonusMark = false; // The bonus mark has been hit
@@ -29,19 +28,16 @@
 				calculateScore(currentItemData, detail.unitPoints, detail.mark, detail.bonus);
 				break;
 		}
-
 	}
 
 	function calculateScore(currentItemData, unitPoints, mark, bonus) {
-				let hasHitBonusMark = currentItemData.quantity !== 0 && (currentItemData.quantity + 1) % mark === 0;
-				
-				if (bonus > 0 && hasHitBonusMark) {
-					countWithBonus(currentItemData, unitPoints, bonus, mark);
-				} else {
-					simpleCount(currentItemData, unitPoints);
-				}
-
-				console.log(currentItemData);
+			let hasHitBonusMark = currentItemData.quantity !== 0 && (currentItemData.quantity + 1) % mark === 0;
+			
+			if (bonus > 0 && hasHitBonusMark) {
+				countWithBonus(currentItemData, unitPoints, bonus, mark);
+			} else {
+				simpleCount(currentItemData, unitPoints);
+			}
 	}
 
 	// Function called if an item does not have bonuses or did not hit the bonus mark
@@ -54,6 +50,8 @@
 	function countWithBonus(currentStoreItem, points, bonus, mark) {
 		currentStoreItem.quantity++;
 		currentStoreItem.score = currentStoreItem.score + points + (bonus - points * mark);
+		
+		$currentPlayerData.totalBonus += bonus - points * mark; // Update total that is bonuses
 	}
 
 	function resetGame() {

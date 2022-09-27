@@ -7,6 +7,12 @@
 	export let currentItems;
 	export let total = 0;
 
+	$: {
+			$currentItems.singleItems.forEach(item => {
+				$currentItems.totalScore += item.score;
+		});
+	}
+
 </script>
 
 <section>
