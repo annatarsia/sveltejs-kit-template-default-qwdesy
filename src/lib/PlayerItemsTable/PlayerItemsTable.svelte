@@ -5,10 +5,9 @@
   const dispatch = createEventDispatcher();
 
 	export let currentItems;
-	export let total = 0;
 
 	$: {
-		total = 0;
+		let total = 0;
 		$currentItems.singleItems.forEach(item => {
 				total += item.score;
 		});
