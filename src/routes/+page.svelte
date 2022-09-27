@@ -38,6 +38,8 @@
 			} else {
 				simpleCount(currentItemData, unitPoints);
 			}
+
+			console.log(currentItemData);
 	}
 
 	// Function called if an item does not have bonuses or did not hit the bonus mark

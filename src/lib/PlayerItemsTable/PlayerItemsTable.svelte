@@ -8,9 +8,11 @@
 	export let total = 0;
 
 	$: {
-			$currentItems.singleItems.forEach(item => {
-				$currentItems.totalScore += item.score;
+		total = 0;
+		$currentItems.singleItems.forEach(item => {
+				total += item.score;
 		});
+		$currentItems.totalScore = total;
 	}
 
 </script>
