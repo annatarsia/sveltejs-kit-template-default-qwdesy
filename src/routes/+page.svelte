@@ -33,7 +33,7 @@
 	}
 
 	function calculateScore(currentItemData, unitPoints, mark, bonus) {
-				let hasHitBonusMark = (currentItemData.score + unitPoints) % mark === 0;
+				let hasHitBonusMark = currentItemData.quantity !== 0 && (currentItemData.quantity + 1) % mark === 0;
 				
 				if (bonus > 0 && hasHitBonusMark) {
 					countWithBonus(currentItemData, unitPoints, bonus, mark);
