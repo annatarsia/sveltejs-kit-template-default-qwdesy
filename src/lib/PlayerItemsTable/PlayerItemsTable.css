@@ -20,7 +20,8 @@
 }
 
 .bonus-container {
-	text-align: center;
+	margin-left: 20px;
+	text-align: left;
 }
 
 .total-button-container {
@@ -34,4 +35,8 @@
 
 .total-button-container button {
 	padding: 5px;
+}
+
+.total-button-container button:hover {
+	cursor: pointer;
 }

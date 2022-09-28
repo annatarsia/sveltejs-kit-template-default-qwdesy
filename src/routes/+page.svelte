@@ -7,8 +7,6 @@
 
 	function collectPoints({ detail }) {
 
-		let currentItemData = {};
-
 		switch (detail.item) {
 			case 'A':
 				calculatePoints('A', detail.unitPoints, detail.mark, detail.bonus);
@@ -92,6 +90,7 @@
 		<tbody>
 			<tr>
 				<td class="points-system__items-column">
+					<div>Items</div>
 					{#each data as item}
 						<Item
 							text={item.text}
