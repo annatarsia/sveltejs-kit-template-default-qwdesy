@@ -38,7 +38,6 @@ section {
 .points-system__items-column {
 	border: none !important;
 	display: inline-block;
-	height: 260px;
 	overflow: auto;
 }
 

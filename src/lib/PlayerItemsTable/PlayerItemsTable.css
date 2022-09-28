@@ -29,5 +29,9 @@
 }
 
 .total-button-container span {
-	padding-top: 3px !important;
+	padding-top: 8px !important;
+}
+
+.total-button-container button {
+	padding: 5px;
 }

@@ -21,26 +21,6 @@ export const currentPlayerData = writable({
 			item: 'D',
 			quantity: 0,
 			score: 0
-		},
-		{
-			item: 'A',
-			quantity: 0,
-			score: 0
-		},
-		{
-			item: 'B',
-			quantity: 0,
-			score: 0
-		},
-		{
-			item: 'C',
-			quantity: 0,
-			score: 0
-		},
-		{
-			item: 'D',
-			quantity: 0,
-			score: 0
 		}
 	],
 	totalBonus: 0,
