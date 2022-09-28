@@ -1,12 +1,11 @@
 <script>
 	import './index.css';
-	import Item from '$lib/Item/Item.svelte';
-	import PlayerItemsTable from '$lib/PlayerItemsTable/PlayerItemsTable.svelte';
 	import { data } from './+page.js'
 	import { currentPlayerData } from './../stores';
+	import Item from '$lib/Item/Item.svelte';
+	import PlayerItemsTable from '$lib/PlayerItemsTable/PlayerItemsTable.svelte';
 
 	function collectPoints({ detail }) {
-
 		switch (detail.item) {
 			case 'A':
 				calculatePoints('A', detail.unitPoints, detail.mark, detail.bonus);

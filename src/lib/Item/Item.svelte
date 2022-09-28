@@ -10,8 +10,6 @@
   export let mark = 0;
   export let bonus = 0;
 
-  let hasBonus = bonus > 0 ? true : false;
-
   function calculateScore(event){
     dispatch('calculateScore', {
       bonus: bonus,
