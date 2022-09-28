@@ -85,8 +85,8 @@
 	<table class="points-system">
 		<thead>
 			<tr class="points-system__headers">
-				<th rowspan="2">Kahoot! Points</th>
-				<th colspan="3">Player Items</th>
+				<th scope="col" rowspan="2">Kahoot! Points</th>
+				<th scope="col" colspan="3">Player Items</th>
 			</tr>
 		</thead>
 		<tbody>

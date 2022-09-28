@@ -30,15 +30,9 @@
 				<td>{row.score}</td>
 			</tr>
 		{/each}
-		<tr>
-			<td>Bonus</td>
-			<td>{$currentItems.totalBonus}</td>
-		</tr>
-		<tr>
-			<td>Total: {$currentItems.totalScore}</td>
-			<td>
-			<button on:click={() => dispatch('reset')}>New game</button>
-			</td>
-		</tr>
 	</table>
+	<div class="bonus-container">Bonus: {$currentItems.totalBonus}</div>
+	<div class="total-button-container">
+		<span>Total: {$currentItems.totalScore}</span>
+		<button on:click={() => dispatch('reset')}>New game</button>
 </section>

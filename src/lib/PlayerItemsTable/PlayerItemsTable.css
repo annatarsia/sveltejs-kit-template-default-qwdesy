@@ -1,7 +1,33 @@
 .player-items {
-	align-items: stretch;
-	display: flex;
-	flex-direction: column;
+	border-spacing: 0;
 	overflow: auto;
 	width: 100%;
+}
+
+.player-items th {
+	background-color: #ddefef;
+	border: solid 1px #ddeeee;
+	color: #336b6b;
+	padding: 10px;
+	text-align: left;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+.player-items td {
+	border-left: none !important;
+	border-right: none !important;
+	border-top: none !important;
+}
+
+.bonus-container {
+	text-align: center;
+}
+
+.total-button-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.total-button-container span {
+	padding-top: 3px !important;
 }
